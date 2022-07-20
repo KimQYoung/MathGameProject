@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Multiply</title>
+        <link rel="stylesheet" href="color.css">
+    </head>
+    <body>
+        <div id="h">
+            <h1><a class="sgbutton">곱셈</a></h1>
+            <h1><a class="sgbutton" href="start.html">Home</a></h1>
+        </div>
+
+        <script>
+            var n ;
+            var m ;
+            var q ; 
+            var nod = 0;
+            function add() {
+                n = Math.floor(Math.random()*(100-0)+0)
+                m = Math.floor(Math.random()*(100-0)+0)
+                var b = n+'X'+m;
+                document.getElementById('num').value = b;
+            }
+            function start() {
+                document.getElementById('sol').value = '';
+                document.getElementById('ss').value = '';
+                add()
+            }
+            function dab() {
+                q = document.getElementById('sol').value;
+                if (q == n * m) {
+                    add()
+                    nod++;
+                    document.getElementById('ss').value = nod;
+                    document.getElementById('sol').value = '';
+                }
+                else{
+                    alert('틀렸습니다, 지금까지'+nod+'개 맞추셨습니다.')
+                    document.getElementById('num').value = '문제'
+                    document.getElementById('sol').value = '답안'
+                    nod = 0;
+                    document.getElementById('ss').value = '맞은 개수';
+                }
+            }
+        </script>
+
+        <input style="font-size: 25px; background-color: black; color:greenyellow" type="button" value="시작" onclick="start()">
+        <br>
+        <h2><a class="sgbutton">맞은 개수</a></h2>
+        <input style="font-size: 50px; color:greenyellow; background-color:black; width: 200px;" type="text" maxlength="0" id="ss" value="맞은 개수">
+        <br><br><br>
+        <h2><a class="sgbutton">문제</a></h2>
+        <input id="num" style="font-size: 50px; color: greenyellow; background-color: black;" type="text" value='문제' maxlength="0">
+        <br><br><br><br>
+        <h2><a class="sgbutton">답안</a></h2>
+        <input style="font-size: 50px; color:greenyellow; background-color: black;" type="text" name="답안" id="sol" value="답안" onchange="dab()">
+
+    </body>
+</html>
